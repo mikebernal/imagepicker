@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-         Using Next.js and Unsplash API and <code>getServerSideProps()</code>
+         Using Unsplash API and <code>getServerSideProps()</code>
         </p>
 
         <div className="grid">
