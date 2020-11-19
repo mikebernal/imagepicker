@@ -72,7 +72,7 @@ export async function getServerSideProps(context) {
   const randomSet   = `https://api.unsplash.com/photos?page=1&client_id=`
   const singleImage = `https://api.unsplash.com/photos/random?&client_id=`
 
-  const res = await fetch(randomSet + cid1)
+  const res    = await fetch(randomSet + cid1)
   const images = await res.json()
 
   console.log(images)
