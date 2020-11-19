@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -14,37 +15,52 @@ export default function Home() {
         </h1>
 
         <p className="description">
-         Using Unsplash API and <code>getServerSideProps()</code>
+         Using <code>getServerSideProps()</code> and Unsplash API
         </p>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Image
+            src="/city.jfif"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <Image
+            src="/garden.jpg"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          <Image
+            src="/tiger.jpg"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Image
+            src="/food.jfif"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
+
+          <Image
+            src="/kobe.jpg"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
+
+          <Image
+            src="/travel.jpg"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
+
         </div>
       </main>
 
