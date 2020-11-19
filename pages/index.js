@@ -1,7 +1,9 @@
+// Next component
 import Head from 'next/head'
 import Image from 'next/image'
 
-export default function Home() {
+export default function Home({ images }) {
+
   return (
     <div className="container">
       <Head>
@@ -11,70 +13,75 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-         Image Picker
+          Image Picker
         </h1>
 
         <p className="description">
-         Using <code>getServerSideProps()</code> and Unsplash API
+          Using <code>getServerSideProps()</code> and Unsplash API
         </p>
 
         <div className="grid">
-          <Image
-            src="/city.jfif"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
-
-          <Image
-            src="/garden.jpg"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
-
-          <Image
-            src="/tiger.jpg"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
-
-          <Image
-            src="/food.jfif"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
-
-          <Image
-            src="/kobe.jpg"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
-
-          <Image
-            src="/travel.jpg"
-            alt="Picture of the author"
-            width={500}
-            height={500}
-          />
+          {
+            // Display list of random images
+            images.map((img) => (
+              <div style={{ width: "50%" }} key={img.name} >
+                <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} />
+              </div>
+            ))
+          }
 
         </div>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
     </div>
   )
+}
+
+/**
+ * Single Image
+ * Pre-render page on each request using the returned data 
+ */
+// export async function getServerSideProps(context) {
+//   const cid1 = `qpcqED-8j9HWAwrzwVNBYhjAK6VteN5WlRq9CxY0IaA`
+//   const cid2 = `_4gO7XdYTRkaz7rXglkVuxRQIydkx1P-QcZYUk_-Tjo`
+
+//   const randomSet   = `https://api.unsplash.com/photos?page=1&client_id=`
+//   const singleImage = `https://api.unsplash.com/photos/random?&client_id=`
+
+//   const res    = await fetch(singleImage + cid1)
+//   const images = await res.json()
+//   const url    = images.urls.small
+//   console.log(images)
+
+//   if (!images) {
+//     return {
+//       notFound: true
+//     }
+//   }
+
+//   return { props: { images, url } }
+// }
+
+/**
+ * Get random set of images
+ */
+export async function getServerSideProps(context) {
+  const cid1 = `qpcqED-8j9HWAwrzwVNBYhjAK6VteN5WlRq9CxY0IaA`
+  const cid2 = `_4gO7XdYTRkaz7rXglkVuxRQIydkx1P-QcZYUk_-Tjo`
+
+  const randomSet   = `https://api.unsplash.com/photos?page=1&client_id=`
+  const singleImage = `https://api.unsplash.com/photos/random?&client_id=`
+
+  const res = await fetch(randomSet + cid1)
+  const images = await res.json()
+
+  console.log(images)
+
+  if (!images) {
+    return {
+      notFound: true
+    }
+  }
+
+  return { props: { images } }
 }
