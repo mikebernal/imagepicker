@@ -1,6 +1,7 @@
 // Next component
 import Head from 'next/head'
 import Image from 'next/image'
+import Date from '../components/date'
 
 export default function Home({ images }) {
 
@@ -26,7 +27,10 @@ export default function Home({ images }) {
             // Use next/image instead and layout fill inside a div with a width adn height set.
             images.map((img) => (
               <div style={{ width: "50%" }} key={img.name} >
-                <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} />
+                <p>Published at: <Date dateString={img.created_at} /></p>
+                
+
+                <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/>
               </div>
             ))
           }

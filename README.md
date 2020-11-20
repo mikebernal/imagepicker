@@ -15,5 +15,6 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 11. getServerSideProps updates data on each request.
 12. unstable_revalidate property solve getStaticProps problem in production by setting time interval of updating data from the backend.
 13. getStaticPaths staticly generates pages at build time based on the paths property. It also gets all the url paths
-14. To make image responsive on both width and height, use Image component inside a div's set dimension.
-15. 
+14. To make image responsive on both width and height, use Image component inside a div's set dimension. The div must be position relative or absolute otherwise it will go to the nearest container.
+15. Next/Image component doesn't do cropping
+16. 
