@@ -3,19 +3,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Date from '../components/date'
 
+export const SITE_TITLE = 'Image Picker'
+
 export default function Home({ images }) {
 
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>{ SITE_TITLE }</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Image Picker
-        </h1>
+        <h1 className="title">{ SITE_TITLE } </h1>
 
         <p className="description">
           Using <code>getServerSideProps()</code> and Unsplash API
