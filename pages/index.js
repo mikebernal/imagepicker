@@ -23,6 +23,7 @@ export default function Home({ images }) {
         <div className="grid">
           {
             // Display list of random images
+            // Use next/image instead and layout fill inside a div with a width adn height set.
             images.map((img) => (
               <div style={{ width: "50%" }} key={img.name} >
                 <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} />
