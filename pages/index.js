@@ -22,18 +22,18 @@ export default function Home({ images }) {
         </p>
 
         <div className="grid">
-          {
-            // Display list of random images
-            // Use next/image instead and layout fill inside a div with a width adn height set.
-            images.map((img) => (
-              <div style={{ width: "50%" }} key={img.name} >
-                <p>Published at: <Date dateString={img.created_at} /></p>
-                
 
-                <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/>
-              </div>
-            ))
-          }
+            {/* Display list of random images */}
+            {/* Use next/image instead and layout fill inside a div with a width adn height set. */}
+              {
+                images.map((img) => (
+                  <div className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }} key={img.name} >
+                    <p>Published at: <Date dateString={img.created_at} /></p>d
+                    {/* <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/> */}
+                    <Image src={img.urls.small} alt={img.description} layout="fill" />
+                  </div>
+                ))
+              }
 
         </div>
       </main>
@@ -41,31 +41,6 @@ export default function Home({ images }) {
     </div>
   )
 }
-
-/**
- * Single Image
- * Pre-render page on each request using the returned data 
- */
-// export async function getServerSideProps(context) {
-//   const cid1 = `qpcqED-8j9HWAwrzwVNBYhjAK6VteN5WlRq9CxY0IaA`
-//   const cid2 = `_4gO7XdYTRkaz7rXglkVuxRQIydkx1P-QcZYUk_-Tjo`
-
-//   const randomSet   = `https://api.unsplash.com/photos?page=1&client_id=`
-//   const singleImage = `https://api.unsplash.com/photos/random?&client_id=`
-
-//   const res    = await fetch(singleImage + cid1)
-//   const images = await res.json()
-//   const url    = images.urls.small
-//   console.log(images)
-
-//   if (!images) {
-//     return {
-//       notFound: true
-//     }
-//   }
-
-//   return { props: { images, url } }
-// }
 
 /**
  * Get random set of images

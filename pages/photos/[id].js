@@ -1,12 +1,12 @@
 import Head from "next/head"
 import Link from "next/link"
-
+import SITE_TITLE from "../index"
 
 export default function Photo() {
     return (
         <>
             <Head>
-                <title>Image Picker</title>
+                <title>{ SITE_TITLE }</title>
             </Head>
 
             <div className="container">
