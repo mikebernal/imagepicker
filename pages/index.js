@@ -46,14 +46,11 @@ export default function Home({ images }) {
  * Get random set of images
  */
 export async function getServerSideProps(context) {
-  const cid1 = `qpcqED-8j9HWAwrzwVNBYhjAK6VteN5WlRq9CxY0IaA`
-  const cid2 = `_4gO7XdYTRkaz7rXglkVuxRQIydkx1P-QcZYUk_-Tjo`
-
-  const randomSet   = `https://api.unsplash.com/photos?page=1&client_id=`
-  const singleImage = `https://api.unsplash.com/photos/random?&client_id=`
-
-  const res    = await fetch(randomSet + cid1)
-  const images = await res.json()
+  const API_ROOT  = `https://api.unsplash.com/photos/random?client_id=`
+  const CLIENT_ID = process.env.unsplashId 
+  
+  const response  = await fetch(API_ROOT + CLIENT_ID)
+  const images    = await response.json()
 
   console.log(images)
 
