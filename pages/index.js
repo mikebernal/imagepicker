@@ -51,6 +51,7 @@ export async function getServerSideProps(context) {
   const res    = await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID + `&count=10`)
   const images = await res.json()
 
+  console.log('vercel env var testing')
   if (!images) {
     return {
       notFound: true
