@@ -27,7 +27,7 @@ export default function Home({ images }) {
             {/* Use next/image instead and layout fill inside a div with a width adn height set. */}
               {
                 images.map((img) => (
-                  <div className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }} key={img.name} >
+                  <div key={img.id} className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }}  >
                     <p>Published at: <Date dateString={img.created_at} /></p>d
                     {/* <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/> */}
                     <Image src={img.urls.small} alt={img.description} layout="fill" />
@@ -46,13 +46,10 @@ export default function Home({ images }) {
  * Get random set of images
  */
 export async function getServerSideProps(context) {
-  const API_ROOT  = `https://api.unsplash.com/photos/random?client_id=`
-  const CLIENT_ID = process.env.unsplashId 
+  const API_ROOT  = `https://api.unsplash.com/photos`
   
-  const response  = await fetch(API_ROOT + CLIENT_ID)
-  const images    = await response.json()
-
-  console.log(images)
+  const res    = await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID + `&count=10`)
+  const images = await res.json()
 
   if (!images) {
     return {
