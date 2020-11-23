@@ -1,9 +1,10 @@
 // React Component & Hooks
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 // Next component
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Custom componenet
 import { Date, SITE_TITLE } from '../components/Helpers'
@@ -20,8 +21,11 @@ export async function fetchImages() {
 
 export default function Home({ images }) {
 
+  const [unsplashImages, setImages] = useState([])
+
   useEffect(function trackScreenYPos() {
     window.addEventListener("scroll", handleScroll)
+    setImages(images)
 
     return function cleanup()  {
       window.removeEventListener("scroll", handleScroll)
@@ -53,11 +57,13 @@ export default function Home({ images }) {
 
         <div className="grid">
           {
-            images.map((img) => (
+            unsplashImages.map((img) => (
               <div key={img.id} className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }}  >
                 <p>Published at: <Date dateString={img.created_at} /></p>
                 {/* <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/> */}
-                <Image src={img.urls.small} alt={img.description} layout="fill" />
+                  <Link href={`/photos/${img.id}`}>
+                    <a><Image src={img.urls.small} alt={img.description} layout="fill" /></a>
+                  </Link>
               </div>
             ))
           }
