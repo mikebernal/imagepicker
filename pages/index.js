@@ -1,11 +1,45 @@
+// React Component & Hooks
+import { useEffect } from 'react'
+
 // Next component
 import Head from 'next/head'
 import Image from 'next/image'
-import Date from '../components/date'
 
-export const SITE_TITLE = 'Image Picker'
+// Custom componenet
+import { Date, SITE_TITLE } from '../components/Helpers'
+import Header from '../components/Header'
+
+/**
+ * Get 10 random images from unsplash API
+ * API Schema: https://api.unsplash.com/photos/random?client_id=YOUR_ID&count=10
+ */
+export async function fetchImages() {
+  const API_ROOT  = `https://api.unsplash.com/photos`
+  return await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID + `&count=10`).then((res) => res.json())
+}
 
 export default function Home({ images }) {
+
+  useEffect(function trackScreenYPos() {
+    window.addEventListener("scroll", handleScroll)
+
+    return function cleanup()  {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [images])
+
+  function handleScroll() {
+
+    return (
+      window.onscroll = function(event) {
+        if ((window.innerHeight + window.scrollY)  >= document.body.scrollHeight) {
+         alert('it works')
+         // Fetch new image here?
+        }
+      }
+    )
+
+  }
 
   return (
     <div className="container">
@@ -15,26 +49,18 @@ export default function Home({ images }) {
       </Head>
 
       <main>
-        <h1 className="title">{ SITE_TITLE } </h1>
-
-        <p className="description">
-          Using <code>getServerSideProps()</code> and Unsplash API
-        </p>
+        <Header />
 
         <div className="grid">
-
-            {/* Display list of random images */}
-            {/* Use next/image instead and layout fill inside a div with a width adn height set. */}
-              {
-                images.map((img) => (
-                  <div key={img.id} className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }}  >
-                    <p>Published at: <Date dateString={img.created_at} /></p>d
-                    {/* <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/> */}
-                    <Image src={img.urls.small} alt={img.description} layout="fill" />
-                  </div>
-                ))
-              }
-
+          {
+            images.map((img) => (
+              <div key={img.id} className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }}  >
+                <p>Published at: <Date dateString={img.created_at} /></p>
+                {/* <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/> */}
+                <Image src={img.urls.small} alt={img.description} layout="fill" />
+              </div>
+            ))
+          }
         </div>
       </main>
 
@@ -42,16 +68,9 @@ export default function Home({ images }) {
   )
 }
 
-/**
- * Get random set of images
- */
 export async function getServerSideProps(context) {
-  const API_ROOT  = `https://api.unsplash.com/photos`
-  
-  const res    = await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID + `&count=10`)
-  const images = await res.json()
+  const images = await fetchImages()
 
-  console.log('vercel env var testing')
   if (!images) {
     return {
       notFound: true

@@ -8,9 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "date-fns": "^2.16.1",
     "next": "^10.0.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-infinite-scroll-component": "^5.1.0",
+    "styled-components": "^5.2.1"
   }
 }

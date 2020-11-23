@@ -2,15 +2,15 @@ import Head from "next/head"
 import Link from "next/link"
 import SITE_TITLE from "../index"
 
-export default function Photo() {
+export default function Photo(props) {
     return (
         <>
             <Head>
                 <title>{ SITE_TITLE }</title>
             </Head>
-
+                it works = {props}
             <div className="container">
-
+                    {props.id}
                 {/* Breadcrumb */}
                 <div className="breadcrumb"></div>
 
@@ -139,3 +139,25 @@ export default function Photo() {
         </>
     )
 }
+
+export async function getStaticPaths() {
+    const API_ROOT = `https://api.unsplash.com/photos`
+    const res      = await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID2 + `&count=10`)
+    const images   = await res.json()
+    const newImgs  = images.map((img) => img[id])
+    console.log(newImgs)
+    console.log('huwat')
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+// export async function getStaticProps({params}) {
+//     const postData
+
+//     return {
+//         props: {  }
+//     }
+// }
