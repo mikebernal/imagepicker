@@ -14,6 +14,7 @@ import Header from '../components/Header'
  * Get 10 random images from unsplash API
  * API Schema: https://api.unsplash.com/photos/random?client_id=YOUR_ID&count=10
  */
+
 export async function fetchImages() {
   const API_ROOT  = `https://api.unsplash.com/photos`
   return await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID + `&count=10`).then((res) => res.json())
