@@ -1,14 +1,16 @@
 import Link from 'next/link'
 
 export default function UserAvatar({user}) {
+  console.log(user)
     return (
         <div>
-        <figure>
-          <img src={user.avatar_url} alt="avatar" />
-        </figure>
+          
         <div>
-          <Link href="/profile/[id]" as={`/profile/${user.login}`}>
-            <a>{user.login}</a>
+          <Link href="/profile/[id]" as={`/profile/${user.username}`}>
+            <a>
+              <img src={user.profile_image.medium} alt="avatar" />
+              <span>{user.username}</span>
+            </a>
           </Link>
         </div>
       </div>

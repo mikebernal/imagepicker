@@ -1,11 +1,10 @@
 // React Component & Hooks
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // Next component
 import Head from 'next/head'
 
 // Custom component
-import Date from '../components/Date'
 import Header from '../components/Header'
 import ImageList from '../components/ImageList'
 

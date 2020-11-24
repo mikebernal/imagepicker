@@ -1,45 +1,40 @@
-// React componenets and hooks
-import { useState, useEffect } from 'react'
-
 // Next component
-import Head from "next/head"
-import { useRouter } from 'next/router';
+import Link from 'next/link'
+import Image from 'next/image'
 
-// Custom components
-import { SITE_TITLE } from '../../components/Helpers'
+// Custom component
+import UserAvatar from '../../components/UserAvatar'
 
-export default function Photo() {
-    const router = useRouter();
-    console.log(router.query)
+// Service
+import { getImage } from '../../services/unsplashService'
+
+
+export default function Photo({photo}) {
     return (
-        <>
-            <Head>
-                <title>{ SITE_TITLE }</title>
-            </Head>
-            <div className="container">
-                {SITE_TITLE}
-                { query.id }
+        <div>  
+            <div style={{ margin: "0 auto", position: "relative", width: "auto", minHeight: "450px" }} >
+                <img src={photo.urls.full} alt={photo.description} style={{ width: "100%", height: "auto" }} title={photo.description}/>
             </div>
-        </>
+            <UserAvatar user={photo.user}></UserAvatar>
+
+            <h3>{photo.alt_description}</h3>
+            <p>Width: {photo.width}</p>
+            <p>Height: {photo.height}</p>
+            <div>Views: {photo.views}</div>
+            <div>Download: {photo.downloads}</div>
+            <br/>
+            <Link href='/'><a>Back</a></Link>
+
+        </div>
     )
 }
 
-
-//----------------------------------------------------------------------------
-//----------------------------------HOOKS-------------------------------------
-//----------------------------------------------------------------------------
-
-export async function getStaticPaths(params) {
+export async function getServerSideProps({query}) {
+    const res = await getImage(query.id)
 
     return {
-        paths,
-        fallback: false
+        props: {
+            photo: res.data
+        }
     }
-}
-
-export async function getStaticProps({ context }) {
-  
-    return {
-      props: {  },
-    };
 }
