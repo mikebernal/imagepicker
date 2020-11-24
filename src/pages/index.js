@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react'
 
 // Next component
 import Head from 'next/head'
-import Image from 'next/image'
+
 import Link from 'next/link'
 
 // Custom component
 import Date from '../components/Date'
 import Header from '../components/Header'
+import ImageList from '../components/ImageList'
 
 // Services
 import { getImages } from '../services/unsplashService'
@@ -17,8 +18,8 @@ import { getImages } from '../services/unsplashService'
 import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 
 
-export default function Home({ images }) {
-  const [unsplashImages, setImages] = useState([])
+export default function Home(props) {
+  const [images, setImages] = useState([props.images])
 
   return (
     <div className="container">
@@ -29,20 +30,7 @@ export default function Home({ images }) {
 
       <main>
         <Header />
-
-        <div className="grid">
-          {
-            images.map((img) => (
-              <div key={img.id} className="card" style={{ position: "relative", width: "auto", minHeight: "450px" }}  >
-                <p>Published at: <Date dateString={img.created_at} /></p>
-                {/* <img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/> */}
-                  <Link href={`/photos/${img.id}`}>
-                    <a><Image src={img.urls.small} alt={img.description} layout="fill" /></a>
-                  </Link>
-              </div>
-            ))
-          }
-        </div>
+        <ImageList images={images}/>
       </main>
 
     </div>
@@ -58,5 +46,9 @@ export async function getServerSideProps(context) {
     }
   }
 
-  return { props: { images } }
+  return {
+    props: {
+      images: images,
+    }
+  }
 }

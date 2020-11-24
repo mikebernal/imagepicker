@@ -12,7 +12,7 @@ import { axiosGetCancellable } from '../helpers/axios.helper'
 export async function getImages() {
     const API_ROOT  = `https://api.unsplash.com/photos`
     if (isServer()) {
-        return await fetch(API_ROOT + `/random?client_id=` + process.env.CLIENT_ID + `&count=10`).then((res) => res.json())
+        return await fetch(API_ROOT + `/random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=10`).then((res) => res.json())
     }
 }
 
