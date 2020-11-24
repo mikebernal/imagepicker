@@ -1,3 +1,6 @@
+/**
+ * Extracted from github-repos tutorial
+ */
 import axios from 'axios'
 
 const cancelConfig = {

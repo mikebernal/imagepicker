@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react'
 // Next component
 import Head from 'next/head'
 
-import Link from 'next/link'
-
 // Custom component
 import Date from '../components/Date'
 import Header from '../components/Header'
@@ -39,7 +37,6 @@ export default function Home(props) {
 
 export async function getServerSideProps(context) {
   const images = await getImages()
-
   if (!images) {
     return {
       notFound: true
@@ -48,7 +45,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      images: images,
+      images: images.data,
     }
   }
 }

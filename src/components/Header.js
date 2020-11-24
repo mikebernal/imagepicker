@@ -5,7 +5,7 @@ export default function Header() {
         <>
             <h1 className="title">{ SITE_TITLE }</h1>
             <p className="description">
-                Using <code>getServerSideProps()</code> and Unsplash API
+                Using <code>NextJS</code> and Unsplash API
             </p>
         </>
     )

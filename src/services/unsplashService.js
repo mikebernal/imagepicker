@@ -1,38 +1,17 @@
 import axios from 'axios'
 import { axiosGetCancellable } from '../helpers/axios.helper'
 
-// const axiosConfig = {
-//   baseURL: 'https://api.unsplash.com/photos/',
-//   auth: {
-//       username: process.env.UNSPLASH_CLIENT_ID,
-//       password: process.env.UNSPLASH_CLIENT_SECRET
-//   }
-// }
-
-export async function getImages() {
-    const API_ROOT  = `https://api.unsplash.com/photos`
-    if (isServer()) {
-        return await fetch(API_ROOT + `/random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=10`).then((res) => res.json())
-    }
+const axiosConfig = {
+  baseURL: 'https://api.unsplash.com/photos/'
 }
 
-// export function getImages() {
-//     const query 
-//     if(isServer()) {
-//       return axios.get(`api_endpoint_here`, axiosConfig)
-//     } 
+export async function getImages() {
+    if (isServer()) {
+        return await axios.get(`random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=10`, axiosConfig)
+    }
 
-
-//     return axiosGetCancellable(`/random&count=10`)
-// }
-
-// export function getImage(id) {
-//   return axios.get(`repositories/${id}`, axiosConfig)
-// }
-
-// export function getProfile(username) {
-//   return axios.get(`users/${username}`, axiosConfig)
-// }
+    return axiosGetCancellable(`api/search`)
+}
 
 function isServer() {
   return typeof window === 'undefined'
