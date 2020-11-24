@@ -18,7 +18,6 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 
 export default function Home(props) {
   const [images, setImages] = useState([props.images])
-
   return (
     <div className="container">
       <Head>
