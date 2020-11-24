@@ -1,4 +1,4 @@
-import { SITE_TITLE } from '../components/Helpers'
+import { SITE_TITLE } from '../helpers/site-title.helper'
 
 export default function Header() {
     return (
