@@ -5,6 +5,9 @@ import BackButton from '../../components/shared/BackButton'
 // Service
 import { getImage } from '../../services/unsplashService'
 
+// Styles
+import styles from '../../scss/photo.module.scss'
+
 
 export default function Photo({photo}) {
 
@@ -22,7 +25,6 @@ export default function Photo({photo}) {
             <div>Download: {photo.downloads}</div>
             <br/>
             <BackButton />
-
         </div>
     )
 }
