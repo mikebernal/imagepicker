@@ -88,9 +88,15 @@
     // background: fuchsia;
 }
 
+.cta {
+    margin: 0 .2em;
+}
+
 
 .title {
     // background: cadetblue
+    text-transform: capitalize;
+    font-weight: 600;
 }
 
 .like_cta {

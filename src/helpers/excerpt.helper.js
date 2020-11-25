@@ -3,6 +3,10 @@
  * @param {*} string 
  */
 export function Excerpt(string) {
+    if (!string || string === null) {
+        return 'N/A'
+    }
+
     if (string.length > 100) {
         return string.slice(0, 100) + '...'
     }

@@ -21,10 +21,8 @@ import {FaHeart, FaPlus, FaDownload, FaHome } from 'react-icons/fa'
 export default function Photo({photo}) {
 
     return (
-        <div class="container">  
-
-
-        {/* Main */}
+        <div className="container">  
+            {/* Main */}
             <div className={styles.photo_div}>
                 
                 {/* Header */}
@@ -62,13 +60,13 @@ export default function Photo({photo}) {
                             {/* CTA */}
                             <div className={styles.col2_cta}>
                                 {/* Like CTA */}
-                                <div className={styles.like_cta}>Like<FaHeart /></div>
+                                <div className="${styles.like_cta} cta"><FaHeart /></div>
 
                                 {/* Add CTA */}
-                                <div className={styles.add_cta}>Add<FaPlus /></div>
+                                <div className="${styles.add_cta} cta"><FaPlus /></div>
 
                                 {/* Download CTA */}
-                                <div className={styles.download_cta}>Download<FaDownload /></div>
+                                <div className="${styles.download_cta} cta"><FaDownload /></div>
                             </div>
 
                         </div>

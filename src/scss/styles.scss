@@ -29,14 +29,9 @@ img {
   display: block;
 }
 
-
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
 }
 
 main {
@@ -152,19 +147,23 @@ code {
   height: 1em;
 }
 
+.cta {
+  margin: 0 .5em;
+  opacity: 0.5;
+}
+
+.cta:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.cta:active {
+  color: red;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
-}
-
-.header {
-  position: absolute;
-  width: 1060px;
-  height: 103px;
-  left: 190px;
-  top: 0px;
-
-  background: #17A7F9;
 }
