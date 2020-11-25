@@ -1,5 +1,5 @@
 // =================================================
-// ================= Containters ===================
+// ==================== Blocks =====================
 // =================================================
 .header {
     background: none;
@@ -11,7 +11,6 @@
 .photo_div {
     display: flex;
     flex-direction: column;
-    // background: red;
     height: calc(100vh - 140px)
 }
 
@@ -23,12 +22,10 @@
 .col1 {
     display: flex;
     flex-direction: column;
-    // background: blue;
     flex: 2;
 }
 
 .col2 {
-    // background: green;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -40,14 +37,13 @@
 // ================= Column 1 ======================
 // =================================================
 .breadcrumb {
-    height: 10%;
-    // background: white;
+    margin: 1.2em 0;
 }
 
 .photo_container {
     position: relative;
     flex: 1;
-    width: 80%;
+    width: 100%;
     min-height: 450px;
 }
 
@@ -72,49 +68,13 @@
     display: flex;
 }
 
-.avatar {
-    // background: orange;
-}
-
 .author_details {
     display: flex;
     flex-direction: column;
 }
-.author {
-    // background: silver;
-}
-
-.author_bio {
-    // background: fuchsia;
-}
-
-.cta {
-    margin: 0 .2em;
-}
-
 
 .title {
-    // background: cadetblue
     text-transform: capitalize;
     font-weight: 600;
-}
-
-.like_cta {
-    // background: pink;
-}
-
-.add_cta {
-    // background: gold
-}
-
-.download_cta {
-    // background: brown
-}
-
-.info_title {
-    // background: burlywood;
-}
-
-.date {
-    // background: salmon;
+    font-size: 21.5px;
 }

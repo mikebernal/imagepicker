@@ -29,9 +29,11 @@ img {
   display: block;
 }
 
-.container {
+.custom_container {
   min-height: 100vh;
-  padding: 0;
+  width: calc(100vw - 1em);
+  padding: 0 2em 0 2em;
+  margin-bottom: 10em;
 }
 
 main {
@@ -65,28 +67,6 @@ footer a {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
 }
 
 .description {
@@ -159,6 +139,13 @@ code {
 
 .cta:active {
   color: red;
+}
+
+.label {
+  // font-weight: 400;
+  color: rgb(104, 95, 95);
+  font-weight: lighter;
+  display: inline-block;
 }
 
 @media (max-width: 600px) {

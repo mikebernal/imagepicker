@@ -4,7 +4,9 @@ import Link from 'next/link'
 
 // Custom components
 import UserAvatar from '../../components/UserAvatar'
+import Header from '../../components/Header'
 import BackButton from '../../components/shared/BackButton'
+import Breadcrumb from '../../components/Breadcrumb'
 import Date from '../../components//Date'
 
 // Services
@@ -15,22 +17,23 @@ import { Excerpt } from '../../helpers/excerpt.helper'
 
 // Styles
 import styles from '../../components/photo.module.scss'
-import {FaHeart, FaPlus, FaDownload, FaHome } from 'react-icons/fa'
+import {FaHeart, FaPlus, FaDownload, FaHome, FaBook, FaImage } from 'react-icons/fa'
 
 
 export default function Photo({photo}) {
 
     return (
-        <div className="container">  
+        <div className="custom_container">  
             {/* Main */}
             <div className={styles.photo_div}>
                 
                 {/* Header */}
 
-                <header className={styles.header}><Link href="/" ><a><FaHome /> Home</a></Link></header>
+                {/* <header className={styles.header}><Link href="/" ><a><FaHome /> Home</a></Link></header> */}
+                <Header />
 
                 {/* Breadcrumb */}
-                <div className={styles.breadcrumb}>Breadcrumb</div>
+                <Breadcrumb />
 
                 {/* Main footer */}
                 <div className={styles.main_footer}>
@@ -40,9 +43,9 @@ export default function Photo({photo}) {
 
                         {/* Photo */}
 
-                        <div className={styles.photo_container} style={{ position: "relative", width: "auto", minHeight: "450px" }} >
+                        <div className={styles.photo_container} style={{ position: "relative", width: "auto", minHeight: "550px" }} >
                             {/* <img src={photo.urls.small} alt={photo.alt_description} style={{ width: "100%", height: "auto" }} title={photo.description}/> */}
-                            <Image src={photo.urls.full} alt={photo.alt_description} layout="fill" />
+                            <Image src={photo.urls.regular} alt={photo.alt_description} layout="fill" />
                         </div>
 
                     </div>
@@ -88,20 +91,20 @@ export default function Photo({photo}) {
                                     </div>
                                     
                                     {/* Author */}
-                                    <div className={styles.author}><strong>Author:</strong> {photo.user.name}</div>
+                                    <div className={styles.author}><span className="label">Author:</span> <small><Link href="/profile/[id]" as={`/profile/${photo.user.username}`}><a>{photo.user.name}</a></Link></small></div>
 
                                     {/* Author bio */}
 
-                                    <div className={styles.author_bio}><strong>Bio:</strong> {Excerpt(photo.user.bio)}</div>
+                                    <div className={styles.author_bio}><span className="label">Bio:</span> <small>{Excerpt(photo.user.bio)}</small></div>
 
                                 </div>
 
                             </div>
 
                             {/* Published date */}
-                            <div className={styles.date}><strong>Published at: </strong><Date dateString={photo.created_at}/></div>
+                            <div className={styles.date}><span className="label">Published at: </span><small><Date dateString={photo.created_at}/></small></div>
                             {/* Like count*/}
-                            <div className={styles.date}><strong>Likes: </strong>{photo.likes}</div>
+                            <div className={styles.date}><span className="label">Likes: </span><small>{photo.likes}</small></div>
                         </div>
                     
                     </div>

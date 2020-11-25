@@ -23,11 +23,9 @@ export default function Home(props) {
         <title>{ SITE_TITLE }</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <Header />
-        <ImageList images={images}/>
-      </main>
+      
+      <Header />
+      <ImageList images={images}/>
 
     </div>
   )
