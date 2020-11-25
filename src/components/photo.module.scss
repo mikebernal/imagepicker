@@ -1,0 +1,110 @@
+// =================================================
+// ================= Containters ===================
+// =================================================
+.header {
+    width: 100%;
+    height: 140px;
+    background: orange;
+}
+
+.photo_div {
+    display: flex;
+    flex-direction: column;
+    // background: red;
+    height: calc(100vh - 140px)
+}
+
+.main_footer {
+    display: flex;
+}
+
+.col1 {
+    display: flex;
+    flex-direction: column;
+    // background: blue;
+    flex: 2;
+}
+
+.col2 {
+    // background: green;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+// =================================================
+// ================= Column 1 ======================
+// =================================================
+.breadcrumb {
+    height: 10%;
+    // background: white;
+}
+
+.photo_container {
+    position: relative;
+    flex: 1;
+    width: auto;
+    min-height: 450px;
+}
+
+.photo {
+    height: auto;
+    width: 100%;
+}
+
+// =================================================
+// ================= Column 2 ======================
+// =================================================
+.col2_header {
+    display: flex;
+    flex-direction: column;
+}
+
+.col2_cta {
+    display: flex;
+}
+
+.author_section {
+    display: flex;
+}
+
+.avatar {
+    // background: orange;
+}
+
+.author_details {
+    display: flex;
+    flex-direction: column;
+}
+.author {
+    // background: silver;
+}
+
+.author_bio {
+    // background: fuchsia;
+}
+
+
+.title {
+    // background: cadetblue
+}
+
+.like_cta {
+    // background: pink;
+}
+
+.add_cta {
+    // background: gold
+}
+
+.download_cta {
+    // background: brown
+}
+
+.info_title {
+    // background: burlywood;
+}
+
+.date {
+    // background: salmon;
+}

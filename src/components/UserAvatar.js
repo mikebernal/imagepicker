@@ -9,7 +9,6 @@ export default function UserAvatar({user}) {
           <Link href="/profile/[id]" as={`/profile/${user.username}`}>
             <a>
               <img src={user.profile_image.medium} alt="avatar" />
-              <span>{user.username}</span>
             </a>
           </Link>
         </div>
