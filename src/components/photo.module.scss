@@ -2,18 +2,31 @@
 // ================= Containters ===================
 // =================================================
 .header {
+<<<<<<< HEAD
     background: none;
+=======
+    width: 100%;
+    height: 140px;
+    background: orange;
+>>>>>>> d9eb324cff6dec8953b7efca979fff815a8917cf
 }
 
 .photo_div {
     display: flex;
     flex-direction: column;
     // background: red;
+<<<<<<< HEAD
+=======
+    height: calc(100vh - 140px)
+>>>>>>> d9eb324cff6dec8953b7efca979fff815a8917cf
 }
 
 .main_footer {
     display: flex;
+<<<<<<< HEAD
     justify-content: space-evenly;
+=======
+>>>>>>> d9eb324cff6dec8953b7efca979fff815a8917cf
 }
 
 .col1 {
@@ -28,7 +41,10 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+<<<<<<< HEAD
     margin-left: 1em;
+=======
+>>>>>>> d9eb324cff6dec8953b7efca979fff815a8917cf
 }
 
 // =================================================
