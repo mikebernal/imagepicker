@@ -1,5 +1,5 @@
-// Next component
-import Link from 'next/link'
+// Custom component
+import BackButton from '../../components/shared/BackButton'
 
 // Service
 import { getProfile } from '../../services/unsplashService'
@@ -11,7 +11,7 @@ export default function Profile({profile}) {
         <div>  
             {/* <img src={profile.profile_image.small} alt=""/> */}
             <p>{profile.name}</p>
-            <Link href='/'><a>Back</a></Link>
+            <BackButton />
         </div>
     )
 }

@@ -1,6 +1,3 @@
-// Next component
-import { useRouter } from 'next/router'
-
 // Custom component
 import UserAvatar from '../../components/UserAvatar'
 import BackButton from '../../components/shared/BackButton'
@@ -10,7 +7,6 @@ import { getImage } from '../../services/unsplashService'
 
 
 export default function Photo({photo}) {
-    const router = useRouter()
 
     return (
         <div>  

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// Next component
 import { useRouter } from 'next/router'
 
 export default function BackButton() {
