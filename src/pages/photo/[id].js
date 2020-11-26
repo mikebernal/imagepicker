@@ -43,7 +43,7 @@ export default function Photo({photo}) {
 
                         {/* Photo */}
 
-                        <div className={styles.photo_container} style={{ position: "relative", width: "auto", minHeight: "550px" }} >
+                        <div className={styles.photo_container} >
                             {/* <img src={photo.urls.small} alt={photo.alt_description} style={{ width: "100%", height: "auto" }} title={photo.description}/> */}
                             <Image src={photo.urls.regular} alt={photo.alt_description} layout="fill" />
                         </div>

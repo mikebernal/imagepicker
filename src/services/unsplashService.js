@@ -16,7 +16,7 @@ export async function getImage(id) {
 // params count=10
 export async function getImages() {
     if (isServer()) {
-        return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=10`, axiosConfig)
+        return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=20`, axiosConfig)
     }
 
     return axiosGetCancellable(`api/search`)

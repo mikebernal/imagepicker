@@ -4,19 +4,16 @@ import Link from 'next/link'
 //Helpers
 import { SITE_TITLE } from '../helpers/site-title.helper'
 
+// Custom component
+import MainLogo from '../components/MainLogo'
 
 export default function Header() {
     return (
         <>
-            <section class="hero is-primary">
+            <section class="hero is-dark">
                 <div class="hero-body">
                     <div class="container">
-                    <h1 class="title">
-                        <Link href="/" ><a>{SITE_TITLE}</a></Link>
-                    </h1>
-                    <h2 class="subtitle">
-                        Using NextJS and Unsplash API
-                    </h2>
+                        <MainLogo />
                     </div>
                 </div>
             </section>

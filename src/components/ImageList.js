@@ -1,15 +1,19 @@
+// Next component
+import Link from 'next/link'
+
 // Custom component
 import ImageListItem from './ImageListItem'
+import styles from './imagelist.module.scss'
 
 
 export default function ImageList(props) {
     const { images } = props
 
     return (
-        <div className="grid">
+        <div className={styles.row}>
             {
-                images[0].map((img) => (
-                    <ImageListItem key={img.id} img={img}></ImageListItem>
+                images[0].map((img, i) => (
+                    <ImageListItem img={img}/>
                 ))
             }
         </div>

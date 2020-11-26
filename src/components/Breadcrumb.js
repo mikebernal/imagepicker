@@ -12,7 +12,7 @@ export default function Breadcrumb() {
                 <ul>
                     <li>
                         <Link href="/">
-                            <a>
+                            <a style={{color: "white"}}>
                                 <span class="icon is-small">
                                     <FaHome />
                                 </span>
@@ -20,8 +20,8 @@ export default function Breadcrumb() {
                             </a>
                         </Link>
                     </li>
-                    <li class="is-active">
-                        <a>
+                    <li>
+                        <a style={{color: "white"}}>
                             <span class="icon is-small">
                                 <FaImage />
                             </span>

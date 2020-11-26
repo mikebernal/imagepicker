@@ -1,0 +1,32 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 2px;
+    align-items: flex-start;
+    background: rgba(60, 60, 60, 0.4);
+    margin-bottom: 2em;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+    display: flex;
+    flex: 25%;
+    max-width: 25%;
+    flex-wrap: wrap;
+    padding: 0 4px;
+
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    min-height: 582px;
+    object-fit: cover;
+    transition: padding .5s, filter .2s;
+
+}
+
+.column img:hover {
+    padding: 7px 0 0 7px;
+    filter:drop-shadow(8px 8px 10px black);
+}
