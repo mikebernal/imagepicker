@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 export default function UserAvatar({user}) {
-  console.log(user)
     return (
         <div>
           

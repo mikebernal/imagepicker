@@ -10,9 +10,9 @@ import MainLogo from '../components/MainLogo'
 export default function Header() {
     return (
         <>
-            <section class="hero is-dark">
-                <div class="hero-body">
-                    <div class="container">
+            <section className="hero is-dark">
+                <div className="hero-body">
+                    <div className="container">
                         <MainLogo />
                     </div>
                 </div>

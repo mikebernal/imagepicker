@@ -23,6 +23,7 @@ a {
 
 a:hover {
   text-decoration: underline;
+  color: white;
 }
 
 img {
@@ -130,7 +131,7 @@ code {
 }
 
 .cta {
-  margin: 0 .5em;
+  margin: .2em .5em 0 0;
   opacity: 0.5;
 }
 
@@ -144,10 +145,10 @@ code {
 }
 
 .label {
-  // font-weight: 400;
-  color: rgb(104, 95, 95);
-  font-weight: lighter;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
   display: inline-block;
+  margin-right: .2em;
 }
 
 @media (max-width: 600px) {
@@ -155,4 +156,10 @@ code {
     width: 100%;
     flex-direction: column;
   }
+}
+
+// Helpers
+
+.mb2 {
+  margin-bottom: 20em;
 }

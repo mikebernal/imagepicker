@@ -1,3 +1,6 @@
+// React component
+import { useEffect } from 'react'
+
 // Next component
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,7 +26,7 @@ import {FaHeart, FaPlus, FaDownload, FaHome, FaBook, FaImage } from 'react-icons
 export default function Photo({photo}) {
 
     return (
-        <div className="custom_container">  
+        <div className="container mb2">  
             {/* Main */}
             <div className={styles.photo_div}>
                 
@@ -36,7 +39,7 @@ export default function Photo({photo}) {
                 <Breadcrumb />
 
                 {/* Main footer */}
-                <div className={styles.main_footer}>
+                <div className={`${styles.main_footer}`}>
 
                     {/* Col1 */}
                     <div className={styles.col1}>
@@ -45,7 +48,7 @@ export default function Photo({photo}) {
 
                         <div className={styles.photo_container} >
                             {/* <img src={photo.urls.small} alt={photo.alt_description} style={{ width: "100%", height: "auto" }} title={photo.description}/> */}
-                            <Image src={photo.urls.regular} alt={photo.alt_description} layout="fill" />
+                            <Image src={photo.urls.regular} alt={photo.alt_description} layout="fill" objectFit="cover"/>
                         </div>
 
                     </div>

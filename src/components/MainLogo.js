@@ -10,20 +10,19 @@ export default function MainLogo() {
 
     return (
         <>
-            
-                {
-                    router.asPath !== '/' 
-                        ?    (
-                                <h1 class="title" >
-                                    <Link href="/" >
-                                        <a className="main_logo">{SITE_TITLE}</a>
-                                    </Link>
-                                </h1>
-                            )
-                        :    (<h1 class="title">{SITE_TITLE}</h1>)  
-                }
+            {
+                router.asPath !== '/' 
+                    ?    (
+                            <h1 className="title" >
+                                <Link href="/" >
+                                    <a className="main_logo">{SITE_TITLE}</a>
+                                </Link>
+                            </h1>
+                        )
+                    :    (<h1 className="title">{SITE_TITLE}</h1>)  
+            }
 
-            <h2 class="subtitle">Using NextJS and Unsplash API</h2>
+            <h2 className="subtitle">Using NextJS and Unsplash API</h2>
         </>
     )
 }

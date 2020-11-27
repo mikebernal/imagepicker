@@ -17,8 +17,21 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 
 export default function Home(props) {
   const [images, setImages] = useState([props.images])
+
+  // Store data to local storage
+  // API->state->localStorage->Component({props})
+  // if (!window.localStorage.getItem('lsImages')) {
+  //   window.localStorage.setItem('lsImages', images)
+  // }
+
+  // const localImages = window.localStorage.getItem('lsImages')
+
+  // useEffect(() => (
+  //   console.log(images)
+  // ))
+
   return (
-    <div className="container">
+    <div className="container mb2">
       <Head>
         <title>{ SITE_TITLE }</title>
         <link rel="icon" href="/favicon.ico" />

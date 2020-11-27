@@ -8,12 +8,12 @@ import styles from './photo.module.scss'
 export default function Breadcrumb() {
     return (
         <div className={styles.breadcrumb}>
-            <nav class="breadcrumb" aria-label="breadcrumbs">
+            <nav className="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                     <li>
                         <Link href="/">
                             <a style={{color: "white"}}>
-                                <span class="icon is-small">
+                                <span className="icon is-small">
                                     <FaHome />
                                 </span>
                                 <span>Home</span>
@@ -22,7 +22,7 @@ export default function Breadcrumb() {
                     </li>
                     <li>
                         <a style={{color: "white"}}>
-                            <span class="icon is-small">
+                            <span className="icon is-small">
                                 <FaImage />
                             </span>
                             <span>Photo</span>

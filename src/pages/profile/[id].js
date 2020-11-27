@@ -6,7 +6,6 @@ import { getProfile } from '../../services/unsplashService'
 
 
 export default function Profile({profile}) {
-    console.log(profile)
     return (
         <div>  
             {/* <img src={profile.profile_image.small} alt=""/> */}

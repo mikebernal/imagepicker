@@ -3,8 +3,7 @@
     flex-wrap: wrap;
     padding: 0 2px;
     align-items: flex-start;
-    background: rgba(60, 60, 60, 0.4);
-    margin-bottom: 2em;
+    background: rgba(60, 60, 60, 0.2);
 }
 
 /* Create four equal columns that sits next to each other */
@@ -14,7 +13,6 @@
     max-width: 25%;
     flex-wrap: wrap;
     padding: 0 4px;
-
 }
 
 .column img {
@@ -23,7 +21,6 @@
     min-height: 582px;
     object-fit: cover;
     transition: padding .5s, filter .2s;
-
 }
 
 .column img:hover {
