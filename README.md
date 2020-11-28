@@ -1,5 +1,16 @@
 This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
+## Screenshots
+
+### Index route
+
+![Path "/"](./public/image_picker.png)
+
+### Photo componenet
+
+![Path "/photo/[id]"](./public/photo_component.png)
+
+
 ### Lessons learned
 
 0. Always read and understand the documentations carefully.

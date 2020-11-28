@@ -54,7 +54,7 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
-    filter:drop-shadow(8px 8px 10px black);
+    box-shadow: 8px 8px 10px black;
 }
 
 .photo {
