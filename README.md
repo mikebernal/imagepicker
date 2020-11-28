@@ -17,4 +17,4 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 13. getStaticPaths staticly generates pages at build time based on the paths property. It also gets all the url paths
 14. To make image responsive on both width and height, use Image component inside a div's set dimension. The div must be position relative or absolute otherwise it will go to the nearest container.
 15. Next/Image component doesn't do cropping
-16. 
+16. localStorage doesn't work in all browsers
