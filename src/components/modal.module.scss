@@ -1,0 +1,76 @@
+.wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #3F3F3F;
+    background-color: rgba(37, 37, 37, 0.9);
+    color: white;
+    top: 0;
+    left: 0;
+    margin: auto;
+    overflow-y: scroll;
+    display: block;
+    padding: 100px 0; /* Location of the box */
+}
+
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
+   
+.no_scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.imgholder {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.close {
+    font-size: 26px;
+    font-weight: 600;
+    opacity: 0.3;
+}
+
+.close:hover  {
+    opacity: 1;
+}
+
+.close:active  {
+    color: rgb(168, 14, 14);
+}
+
+.img {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    object-fit: cover;
+    background-position: center center;
+}
+
+
+.test::-webkit-scrollbar {
+    width: 8px;
+}
+
+// Track
+.test::-webkit-scrollbar-track {
+    width: 4px;
+    background-color: rgba(17, 17, 17);
+}
+
+/* Handle */
+.test::-webkit-scrollbar-thumb {
+    width: 4px;
+    // border-radius: 2px;
+    background-color: rgba(109, 83, 83, 0.3);
+}
+  
+/* Handle on hover */
+.test::-webkit-scrollbar-thumb:hover {
+    background: rgb(80, 59, 59);
+}

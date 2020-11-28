@@ -7,8 +7,8 @@ export function Excerpt(string) {
         return 'N/A'
     }
 
-    if (string.length > 100) {
-        return string.slice(0, 100) + '...'
+    if (string.length > 200) {
+        return string.slice(0, 200) + '...'
     }
 
     return string

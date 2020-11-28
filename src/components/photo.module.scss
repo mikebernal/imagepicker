@@ -32,6 +32,13 @@
     margin-left: 1em;
 }
 
+.photo_full {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
 // =================================================
 // ================= Column 1 ======================
 // =================================================
@@ -46,6 +53,8 @@
     min-height: 550px;
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    filter:drop-shadow(8px 8px 10px black);
 }
 
 .photo {
