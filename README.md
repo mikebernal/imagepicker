@@ -1,7 +1,16 @@
 This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
+
+Quick Links:
+
+1. Preview deployment: http://imagepicker-git-main.mikebernal.vercel.app/
+2. Action board: https://github.com/mikebernal/imagepicker/projects/1
+
 ## Screenshots
 
+### UI data flow
+
+![Data flow](./public/uiflow.png)
 ### Index route
 
 ![Path "/"](./public/image_picker.png)
@@ -9,7 +18,6 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 ### Photo component
 
 ![Path "/photo/[id]"](./public/photo_component.png)
-
 
 ### Lessons learned
 
