@@ -6,7 +6,7 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 ![Path "/"](./public/image_picker.png)
 
-### Photo componenet
+### Photo component
 
 ![Path "/photo/[id]"](./public/photo_component.png)
 
