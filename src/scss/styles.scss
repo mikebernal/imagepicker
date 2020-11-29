@@ -160,6 +160,22 @@ code {
 
 // Helpers
 
+.mlp5 {
+  margin-left: .5em;
+}
+
 .mb2 {
   margin-bottom: 20em;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.defaultCursor {
+  cursor: default;
+}
+
+.hover {
+  cursor: pointer;
 }

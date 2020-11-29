@@ -1,11 +1,14 @@
 // Next component
 import Link from 'next/link'
 
-// Styles
-import { FaHome, FaImage } from 'react-icons/fa'
-import styles from './photo.module.scss'
+// Helpers
+import { getFaIcon } from '../helpers/fa.helper'
 
-export default function Breadcrumb() {
+import styles from './breadcrumb.module.scss'
+
+export default function Breadcrumb(props) {
+    const { postType } = props
+
     return (
         <div className={styles.breadcrumb}>
             <nav className="breadcrumb" aria-label="breadcrumbs">
@@ -14,21 +17,17 @@ export default function Breadcrumb() {
                         <Link href="/">
                             <a style={{color: "white"}}>
                                 <span className="icon is-small">
-                                    <FaHome />
+                                    {getFaIcon('home')}
                                 </span>
                                 <span>Home</span>
                             </a>
                         </Link>
                     </li>
                     <li>
-                        <a style={{color: "white"}}>
-                            <span className="icon is-small">
-                                <FaImage />
-                            </span>
-                            <span>Photo</span>
-                        </a>
-
-
+                        <span className="icon is-small defaultCursor mlp5">
+                            {getFaIcon(postType)}
+                        </span>
+                        <span className={`${styles.post_type}`}>{postType}</span>
                     </li>
                 </ul>
             </nav>

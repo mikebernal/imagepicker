@@ -1,6 +1,6 @@
 // Styles
 import styles from '../../components/photo.module.scss'
-import {FaHeart, FaPlus, FaDownload, FaHome, FaBook, FaImage } from 'react-icons/fa'
+import {FaHeart, FaPlus, FaDownload } from 'react-icons/fa'
 
 export default function CtaDiv() {
     return (
