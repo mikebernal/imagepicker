@@ -1,6 +1,3 @@
-// Next component
-import Link from 'next/link'
-
 // Custom component
 import ImageListItem from './ImageListItem'
 import styles from './imagelist.module.scss'

@@ -57,7 +57,7 @@ export default function Photo(props) {
 
                         <div className={styles.photo_container} >
                             {/* <img src={photo.urls.small} alt={photo.alt_description} style={{ width: "100%", height: "auto" }} title={photo.description}/> */}
-                            <Image style={{ border: "5px solid red"}} src={props.photo.urls.regular} alt={props.photo.alt_description} layout="fill" objectFit="cover" onClick={() => (toggleModal())}/>
+                            <Image src={props.photo.urls.regular} alt={props.photo.alt_description} layout="fill" objectFit="cover" onClick={() => (toggleModal())}/>
                         </div>
 
                     </div>
