@@ -1,3 +1,7 @@
+//React
+import React, { useState } from 'react'
+
+// Third party libraries
 import axios from 'axios'
 import { axiosGetCancellable } from '../helpers/axios.helper'
 
@@ -11,6 +15,16 @@ export async function getImage(id) {
       return await axios.get(`photos/${id}?client_id=` + process.env.UNSPLASH_CLIENT_ID2, axiosConfig)
   }
 }
+
+// Get random images using react query's infinite queries
+export async function getInfiniteImages() {
+  if (isServer()) {
+      return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID2 + `&count=20`, axiosConfig)
+  }
+
+  return axiosGetCancellable(`api/search`)
+}
+
 
 // GET /photos/random
 // params count=10

@@ -1,3 +1,4 @@
+// React Component & Hooks
 import React, { useState } from 'react'
 
 // Next component
@@ -5,11 +6,10 @@ import Head from 'next/head'
 
 // Custom component
 import Header from '../components/Header'
-import Loader from '../components/Loader'
 import ImageList from '../components/ImageList'
 
 // Third party libraries
-import axios from 'axios'
+import { axios } from 'axios'
 import { useInfiniteQuery } from 'react-query'
 
 // Services
@@ -18,9 +18,11 @@ import { getImages } from '../services/unsplashService'
 // Helpers
 import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 
- 
-export default function Posts() {
+
+export default function Home() {
+  // const [images, setImages] = useState([props.images])
   const [start, setStart] = useState(0)
+
 
   const {
     status,
@@ -30,15 +32,17 @@ export default function Posts() {
     fetchMore,
     canFetchMore,
     error,
-  } = useInfiniteQuery('posts', 
-    async (key, nextId = 12) => {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID2}&count=${nextId}`)
+  } = useInfiniteQuery('images', 
+    async (key, nextId = 10) => {
+      const { data } = await axios.get(
+        `https://api.unsplash.com/photos/random?client_id=HfYrnuq7MHi2vbUK0qhFWe7Gvad97sRKZMxhSTBuOgM&count=${nextId}`
+      )
+
       return data
-    }
-  )
+    })
 
   function getMore() {
-    const newStart = start + 12
+    const newStart = start + 10
     setStart(newStart)
     fetchMore(newStart)
   }
@@ -49,23 +53,33 @@ export default function Posts() {
         <title>{ SITE_TITLE }</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <Header />
+      {/* <ImageList images={images}/> */}
       {
+
         status === 'loading' ? (
-         <div className="center">
-            <Loader />
-         </div> 
+          <p>Loading...</p>
         ) : status === 'error' ? (
           <p>Error: {error.message}</p>
         ) : (
           <>
-            <ImageList images={data.flat()}/>
-            <div className="center">
-              <button onClick={() => getMore()}>Load more</button>
-              <div>{isFetching && !isFetchingMore ? <Loader /> : null}</div>
-            </div>
+            {
+              data.map((images, i) => (
+                // console.log(data)
+                  <React.Fragment key={i}>
+                    {images.map(image => (
+                      // <ImageListItem key={img.id} img={img}/>
+                      <p key={image.id}>{image.id}</p>
+                    ))}
+                </React.Fragment>
+              ))
+            }
+
+            <button onClick={() => getMore()}>Load more</button>
           </>
         )
+
       }
 
     </div>
