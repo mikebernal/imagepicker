@@ -18,33 +18,6 @@ export async function getImage(id) {
 
 // Get random images using react query's infinite queries
 export async function getInfiniteImages() {
-  const [start, setStart] = useState(0)
-
-  function getMore() {
-    const newStart = start + 10
-    setStart(newStart)
-    fetchMore(newStart)
-  }
-
-  const {
-    status,
-    data,
-    isFetching,
-    isFetchingMore,
-    fetchMore,
-    canFetchMore,
-    error,
-  } = useInfiniteQuery('posts', 
-    async (key, nextId = 10) => {
-
-    if (isServer()) {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=HfYrnuq7MHi2vbUK0qhFWe7Gvad97sRKZMxhSTBuOgM&count=${nextId}`)
-      return data
-    }
-  
-    }
-  )
-
   if (isServer()) {
       return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID2 + `&count=20`, axiosConfig)
   }
