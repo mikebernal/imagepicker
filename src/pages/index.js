@@ -1,5 +1,4 @@
-// React Component & Hooks
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // Next component
 import Head from 'next/head'
@@ -9,6 +8,7 @@ import Header from '../components/Header'
 import ImageList from '../components/ImageList'
 
 // Third party libraries
+import axios from 'axios'
 import { useInfiniteQuery } from 'react-query'
 
 // Services
@@ -16,36 +16,73 @@ import { getImages } from '../services/unsplashService'
 
 // Helpers
 import { SITE_TITLE } from '../../src/helpers/site-title.helper'
+ 
+export default function Posts() {
+  const [start, setStart] = useState(0)
 
+  const {
+    status,
+    data,
+    isFetching,
+    isFetchingMore,
+    fetchMore,
+    canFetchMore,
+    error,
+  } = useInfiniteQuery('posts', 
+    async (key, nextId = 12) => {
+      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=HfYrnuq7MHi2vbUK0qhFWe7Gvad97sRKZMxhSTBuOgM&count=${nextId}`)
+      return data
+    }
+  )
 
-export default function Home(props) {
-  const [images, setImages] = useState([props.images])
+  function getMore() {
+    const newStart = start + 12
+    setStart(newStart)
+    fetchMore(newStart)
+  }
 
-  return (
-    <div className="container mb2">
-      <Head>
-        <title>{ SITE_TITLE }</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      
-      <Header />
-      <ImageList images={images}/>
+  return status === 'loading' ? (
+    <p>Loading...</p>
+  ) : status === 'error' ? (
+    <p>Error: {error.message}</p>
+  ) : (
+      <div className="container mb2">
+        <Head>
+          <title>{ SITE_TITLE }</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        
+        <Header />
+        {
 
-    </div>
+          status === 'loading' ? (
+            <p>Loading...</p>
+          ) : status === 'error' ? (
+            <p>Error: {error.message}</p>
+          ) : (
+            <>
+              <ImageList images={data.flat()}/>
+              <button onClick={() => getMore()}>Load more</button>
+            </>
+          )
+
+        }
+
+      </div>
   )
 }
 
-export async function getServerSideProps(context) {
-  const images = await getImages()
-  if (!images) {
-    return {
-      notFound: true
-    }
-  }
+// export async function getServerSideProps(context) {
+//   const images = await getImages()
+//   if (!images) {
+//     return {
+//       notFound: true
+//     }
+//   }
 
-  return {
-    props: {
-      images: images.data,
-    }
-  }
-}
+//   return {
+//     props: {
+//       images: images.data,
+//     }
+//   }
+// }
