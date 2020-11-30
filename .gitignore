@@ -11,7 +11,7 @@
 # next.js
 /.next/
 /out/
-next.config.js
+
 
 # production
 /build
@@ -31,3 +31,4 @@ yarn-error.log*
 .env.production.local
 
 .vercel
+next.config.js
