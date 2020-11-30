@@ -27,3 +27,14 @@
     padding: 7px 0 0 7px;
     filter:drop-shadow(8px 8px 10px black);
 }
+
+
+@media screen and (max-width: 768px) {
+    .column {
+        max-width: 100%;;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+}
