@@ -5,7 +5,7 @@ import styles from "./nextbutton.module.scss"
 
 import { FaChevronRight } from 'react-icons/fa'
 
-export default function PreviousButton({id, ids}) {
+export default function NextButton({id, ids}) {
     const router = useRouter()
 
     return (

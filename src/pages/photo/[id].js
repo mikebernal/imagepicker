@@ -46,14 +46,14 @@ export default function Photo(props) {
         switch(index) {
             case 0: 
                 // Hide previous button
-                return <NextButton />
+                return <NextButton id={(getPhoto(index+1))} ids={ids} />
             case (length - 1):
                 // Hide next button
-                return <PreviousButton onClick={()=> alert('it works')}/>
+                return <PreviousButton id={(getPhoto(index-1))} ids={ids} />
             default:
                 return (
                     <>
-                        <PreviousButton />
+                        <PreviousButton id={(getPhoto(index-1))} ids={ids} />
                         <NextButton id={(getPhoto(index+1))} ids={ids} />
                     </>
                 )
