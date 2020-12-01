@@ -21,7 +21,6 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
  
 export default function Posts() {
   const [start, setStart] = useState(0)
-  const [ids, setIds] = useState([])
 
   const {
     status,
@@ -33,19 +32,7 @@ export default function Posts() {
     error,
   } = useInfiniteQuery('posts', 
     async (key, nextId = 10) => {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID2}&count=${nextId}`)
-
-      const newIds = data.map(element => {
-        return element['id']
-      });
-      if (ids.length) {
-        setIds(newIds)
-      } else {
-        setIds(prevState => ({
-          ...prevState,
-          newIds
-        }))
-      }
+      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID3}&count=${nextId}`)
 
       return data
     }

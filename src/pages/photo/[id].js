@@ -11,6 +11,8 @@ import UserAvatar from '../../components/UserAvatar'
 import Header from '../../components/Header'
 import Breadcrumb from '../../components/Breadcrumb'
 import Date from '../../components//Date'
+import PreviousButton from '../../components/PreviousButton'
+import NextButton from '../../components/NextButton'
 
 // Services
 import { getImage } from '../../services/unsplashService'
@@ -28,6 +30,42 @@ import { FaHeart, FaPlus, FaDownload } from 'react-icons/fa'
 export default function Photo(props) {
     const [isShown, setIsShown] = useState("")
     const router = useRouter()
+    const index = props.ids.indexOf(props.photo.id)
+    const length = props.ids.length
+    console.log('index: ', index)
+    
+    // Display navigation button
+    function navigation() {
+        switch(index) {
+            case 0: 
+                // Hide previous button
+                return (
+                    <>
+                        <PreviousButton />
+                        <NextButton />
+                    </>
+                )
+                break
+            case (length - 1):
+                // Hide next button
+                return (
+                    <>
+                        <PreviousButton />
+                        <NextButton />
+                    </>
+                )
+                break
+            default:
+                return (
+                    <>
+                        <PreviousButton />
+                        <NextButton />
+                    </>
+                )
+                
+                console.log('Invalid ID')
+        }
+    }
 
     function toggleModal() {
         if (isShown === "is-active") {
@@ -49,6 +87,8 @@ export default function Photo(props) {
 
                 {/* Main footer */}
                 <div className={`${styles.main_footer}`}>
+
+                    {navigation()}
 
                     {/* Col1 */}
                     <div className={styles.col1}>
@@ -141,9 +181,11 @@ export default function Photo(props) {
 
 export async function getServerSideProps(context) {
     const res = await getImage(context.query.id)
+    // console.log(context.query.ids)
     return {
         props: {
-            photo: res.data
+            photo: res.data,
+            ids: context.query.ids
         }
     }
 }
