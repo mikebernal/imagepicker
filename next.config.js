@@ -10,6 +10,7 @@ module.exports = {
       UNSPLASH_CLIENT_ID2: "MYdLLAb-tOd88gaq6yzkGKh86IzMFJqPg96x0aJWk2o",
       UNSPLASH_CLIENT_ID3: "AgTsdyy9I-hCQRNWx-yiVzibzPZro15CZHtCzVlRdyM",
       UNSPLASH_CLIENT_ID4: "HfYrnuq7MHi2vbUK0qhFWe7Gvad97sRKZMxhSTBuOgM",
+      UNSPLASH_CLIENT_ID5: "Vvd1pL3_RQO5PSzhXtv4t58DDD2XZSNQ1IGamixAhwc",
     },
     
 }

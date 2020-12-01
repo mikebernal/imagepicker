@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Next component
 import Head from 'next/head'
@@ -22,6 +22,23 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 export default function Posts() {
   const [start, setStart] = useState(0)
 
+  useEffect(function mount() {
+
+    function onScroll() {
+      console.log(window.scrollY);
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            // you're at the bottom of the page
+            getMore()
+        }
+    }
+
+    window.addEventListener("scroll", onScroll);
+
+    return function unMount() {
+      window.removeEventListener("scroll", onScroll);
+    };
+  });
+
   const {
     status,
     data,
@@ -32,7 +49,7 @@ export default function Posts() {
     error,
   } = useInfiniteQuery('posts', 
     async (key, nextId = 10) => {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID4}&count=${nextId}`)
+      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID5}&count=${nextId}`)
 
       return data
     }
@@ -51,6 +68,7 @@ export default function Posts() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      
       {
         status === 'loading' ? (
          <div className="center">
@@ -62,7 +80,7 @@ export default function Posts() {
           <>
             <ImageList images={data.flat()}/>
             <div className="center">
-              <button onClick={() => getMore()}>Load more</button>
+              {/* <button onClick={() => getMore()}>Load more</button> */}
               <div>{isFetching && !isFetchingMore ? <Loader /> : null}</div>
             </div>
           </>
