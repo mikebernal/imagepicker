@@ -31,14 +31,15 @@ export default function Posts() {
     canFetchMore,
     error,
   } = useInfiniteQuery('posts', 
-    async (key, nextId = 12) => {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID2}&count=${nextId}`)
+    async (key, nextId = 10) => {
+      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID4}&count=${nextId}`)
+
       return data
     }
   )
 
   function getMore() {
-    const newStart = start + 12
+    const newStart = start + 10
     setStart(newStart)
     fetchMore(newStart)
   }

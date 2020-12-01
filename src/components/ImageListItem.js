@@ -5,10 +5,13 @@ import Image from 'next/image'
 // Styles
 import styles from './imagelist.module.scss'
 
+// const newIds = data.map(element => {
+//     return element['id']
+//   });
 
-export default function ImageListItem({img}) {
+export default function ImageListItem({img, ids}) {
     const router = useRouter()
-    
+
     return (
         <div key={img.id} className={styles.column}>
             <span 
@@ -18,7 +21,8 @@ export default function ImageListItem({img}) {
                         pathname: `/photo/[id]`,
                         as: `/photo/${img.id}`,
                         query: {
-                            id: img.id
+                            id: img.id,
+                            ids: ids
                         }
 
                     })

@@ -1,0 +1,18 @@
+.right {
+    background: rgba(59, 59, 59, 0.1);
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    width: 3vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.right:hover {
+    background: rgba(36, 18, 7, 0.2);
+    cursor: pointer;
+}
