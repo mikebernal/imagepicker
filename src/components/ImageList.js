@@ -10,7 +10,7 @@ export default function ImageList(props) {
             <div className={styles.row}>
                 {
                     images.map((img, i) => (
-                        <ImageListItem key={img.id} img={img}/>
+                        <ImageListItem key={img.id + i} img={img}/>
                     ))
                 }
             </div>

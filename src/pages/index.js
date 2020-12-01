@@ -21,6 +21,7 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
  
 export default function Posts() {
   const [start, setStart] = useState(0)
+  const [ids, setIds] = useState([])
 
   const {
     status,
@@ -31,14 +32,27 @@ export default function Posts() {
     canFetchMore,
     error,
   } = useInfiniteQuery('posts', 
-    async (key, nextId = 12) => {
+    async (key, nextId = 10) => {
       const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID2}&count=${nextId}`)
+
+      const newIds = data.map(element => {
+        return element['id']
+      });
+      if (ids.length) {
+        setIds(newIds)
+      } else {
+        setIds(prevState => ({
+          ...prevState,
+          newIds
+        }))
+      }
+
       return data
     }
   )
 
   function getMore() {
-    const newStart = start + 12
+    const newStart = start + 10
     setStart(newStart)
     fetchMore(newStart)
   }
