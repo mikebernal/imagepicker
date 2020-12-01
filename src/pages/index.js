@@ -32,7 +32,7 @@ export default function Posts() {
     error,
   } = useInfiniteQuery('posts', 
     async (key, nextId = 10) => {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID3}&count=${nextId}`)
+      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID4}&count=${nextId}`)
 
       return data
     }

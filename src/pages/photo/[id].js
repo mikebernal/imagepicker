@@ -30,40 +30,33 @@ import { FaHeart, FaPlus, FaDownload } from 'react-icons/fa'
 export default function Photo(props) {
     const [isShown, setIsShown] = useState("")
     const router = useRouter()
-    const index = props.ids.indexOf(props.photo.id)
+    const ids    = props.ids
+    const index  = props.ids.indexOf(props.photo.id)
     const length = props.ids.length
-    console.log('index: ', index)
+
+
+    function getPhoto(index) {
+        console.log(ids[index])
+        return ids[index]
+    }
     
     // Display navigation button
     function navigation() {
+
         switch(index) {
             case 0: 
                 // Hide previous button
-                return (
-                    <>
-                        <PreviousButton />
-                        <NextButton />
-                    </>
-                )
-                break
+                return <NextButton />
             case (length - 1):
                 // Hide next button
-                return (
-                    <>
-                        <PreviousButton />
-                        <NextButton />
-                    </>
-                )
-                break
+                return <PreviousButton onClick={()=> alert('it works')}/>
             default:
                 return (
                     <>
                         <PreviousButton />
-                        <NextButton />
+                        <NextButton id={(getPhoto(index+1))} ids={ids} />
                     </>
                 )
-                
-                console.log('Invalid ID')
         }
     }
 
@@ -162,7 +155,7 @@ export default function Photo(props) {
                     </div>
                 </div>
 
-                <div className={`modal ${isShown}`}>
+                <div className={`modal ${isShown}`} style={{zIndex: '99'}}>
                     <div className="modal-background"></div>
                         <div className={`${modal.test} modal-content`} style={{ width: "80%", height: "auto", overflow: "auto" }}>
                             <div className="image is-1by1">
@@ -170,7 +163,7 @@ export default function Photo(props) {
                                 <Image src={props.photo.urls.regular} alt={props.photo.alt_description} layout="fill" objectFit="cover" />
                             </div>
                         </div>
-                    <button className="modal-close is-large" aria-label="close" onClick={() => (toggleModal())}></button>
+                    <button className="modal-close is-large closeBtn" aria-label="close" onClick={() => (toggleModal())}></button>
                 </div>
 
             </div>
@@ -181,9 +174,8 @@ export default function Photo(props) {
 
 export async function getServerSideProps(context) {
     const res = await getImage(context.query.id)
-    // console.log(context.query.ids)
     return {
-        props: {
+        props:{
             photo: res.data,
             ids: context.query.ids
         }

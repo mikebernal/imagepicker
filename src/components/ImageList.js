@@ -10,8 +10,6 @@ export default function ImageList(props) {
         return element['id']
     });
 
-    console.log(ids)
-
     return (
             <div className={styles.row}>
                 {

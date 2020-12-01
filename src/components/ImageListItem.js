@@ -14,16 +14,6 @@ export default function ImageListItem({img, ids}) {
 
     return (
         <div key={img.id} className={styles.column}>
-            <div>
-                {
-                    // ids.map((element) => (
-                    //     <p>{element}</p>
-                    // ))
-                    <>
-                    <p>{img.id}</p></>
-
-                }
-            </div>
             <span 
                 className="hover"
                 onClick={() => (
