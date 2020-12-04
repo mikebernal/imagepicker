@@ -22,6 +22,23 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 export default function Posts() {
   const [start, setStart] = useState(0)
 
+  async function fetchImages(key, nextId = 10) {
+    const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID}&count=${nextId}`)
+    return data
+  }
+
+  const imagesQuery = useInfiniteQuery(
+    'images', 
+    fetchImages, {
+    staleTime: Infinity
+  })
+
+  function getMore() {
+    const newStart = start + 10
+    setStart(newStart)
+    imagesQuery.fetchMore(newStart)
+  }
+
   useEffect(function mount() {
 
     function onScroll() {
@@ -35,35 +52,8 @@ export default function Posts() {
 
     return function unMount() {
       window.removeEventListener("scroll", onScroll);
-    };
-  });
-
-  async function fetchImages(key, nextId = 10) {
-    const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID}&count=${nextId}`)
-    return data
-  }
-
-  const {
-    status,
-    data,
-    isFetching,
-    isFetchingMore,
-    fetchMore,
-    canFetchMore,
-    error,
-  } = useInfiniteQuery(
-    'posts',
-    fetchImages,
-    // {
-    //   staleTime: Infinity
-    // }
-  )
-
-  function getMore() {
-    const newStart = start + 10
-    setStart(newStart)
-    fetchMore(newStart)
-  }
+    }
+  })
 
   return (
     <div className="container mb2">
@@ -74,17 +64,17 @@ export default function Posts() {
       <Header />
       
       {
-        status === 'loading' ? (
+        imagesQuery.status === 'loading' ? (
          <div className="center">
             <Loader />
          </div> 
-        ) : status === 'error' ? (
-          <p>Error: {error.message}</p>
+        ) : imagesQuery.status === 'error' ? (
+          <p>Error: {imagesQuery.error.message}</p>
         ) : (
           <>
-            <ImageList images={data.flat()}/>
+            <ImageList images={imagesQuery.data.flat()}/>
             <div className="center">
-              <div>{isFetching ? <Loader /> : null}</div>
+              <div>{imagesQuery.isFetching ? <Loader /> : null}</div>
             </div>
           </>
         )
