@@ -18,14 +18,13 @@ import { getImages } from '../services/unsplashService'
 // Helpers
 import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 
- 
+
 export default function Posts() {
   const [start, setStart] = useState(0)
 
   useEffect(function mount() {
 
     function onScroll() {
-      console.log(window.scrollY);
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
             // you're at the bottom of the page
             getMore()
@@ -39,6 +38,11 @@ export default function Posts() {
     };
   });
 
+  async function fetchImages(key, nextId = 10) {
+    const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID}&count=${nextId}`)
+    return data
+  }
+
   const {
     status,
     data,
@@ -47,14 +51,12 @@ export default function Posts() {
     fetchMore,
     canFetchMore,
     error,
-  } = useInfiniteQuery('posts', 
-    async (key, nextId = 10) => {
-      const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID5}&count=${nextId}`)
-
-      return data
-    }, {
-      staleTime: Infinity
-    }
+  } = useInfiniteQuery(
+    'posts',
+    fetchImages,
+    // {
+    //   staleTime: Infinity
+    // }
   )
 
   function getMore() {
@@ -82,13 +84,11 @@ export default function Posts() {
           <>
             <ImageList images={data.flat()}/>
             <div className="center">
-              {/* <button onClick={() => getMore()}>Load more</button> */}
-              <div>{isFetching && !isFetchingMore ? <Loader /> : null}</div>
+              <div>{isFetching ? <Loader /> : null}</div>
             </div>
           </>
         )
       }
-
     </div>
   )
 }
