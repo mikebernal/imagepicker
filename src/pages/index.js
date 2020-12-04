@@ -23,7 +23,7 @@ export default function Posts(props) {
   const [start, setStart] = useState(0)
 
   async function fetchImages(key, nextId = 10) {
-    const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID}&count=${nextId}`)
+    const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID2}&count=${nextId}`)
     return data
   }
 

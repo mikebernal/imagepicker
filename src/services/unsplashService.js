@@ -13,7 +13,7 @@ const axiosConfig = {
 // GET /photos/:id
 export async function getImage(id) {
   if (isServer()) {
-      return await axios.get(`photos/${id}?client_id=` + process.env.UNSPLASH_CLIENT_ID, axiosConfig)
+      return await axios.get(`photos/${id}?client_id=` + process.env.UNSPLASH_CLIENT_ID2, axiosConfig)
   }
 }
 
@@ -21,7 +21,7 @@ export async function getImage(id) {
 // params count=10
 export async function getImages() {
     if (isServer()) {
-        return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=10`, axiosConfig)
+        return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID2 + `&count=10`, axiosConfig)
     }
 
     return axiosGetCancellable(`api/search`)
@@ -30,7 +30,7 @@ export async function getImages() {
 // GET /users/:username
 export async function getProfile(username) {
     if (isServer()) {
-        return await axios.get(`users/${username}?client_id=` + process.env.UNSPLASH_CLIENT_ID, axiosConfig)
+        return await axios.get(`users/${username}?client_id=` + process.env.UNSPLASH_CLIENT_ID2, axiosConfig)
     }
 }
 
