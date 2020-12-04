@@ -19,7 +19,7 @@ import { getImages } from '../services/unsplashService'
 import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 
 
-export default function Posts() {
+export default function Posts(props) {
   const [start, setStart] = useState(0)
 
   async function fetchImages(key, nextId = 10) {
@@ -30,7 +30,8 @@ export default function Posts() {
   const imagesQuery = useInfiniteQuery(
     'images', 
     fetchImages, {
-    staleTime: Infinity
+    staleTime: Infinity,
+    initialData: props.images,
   })
 
   function getMore() {
@@ -43,7 +44,6 @@ export default function Posts() {
 
     function onScroll() {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            // you're at the bottom of the page
             getMore()
         }
     }
@@ -83,17 +83,17 @@ export default function Posts() {
   )
 }
 
-// export async function getServerSideProps(context) {
-//   const images = await getImages()
-//   if (!images) {
-//     return {
-//       notFound: true
-//     }
-//   }
+export async function getServerSideProps(context) {
+  const images = await getImages()
+  if (!images) {
+    return {
+      notFound: true
+    }
+  }
 
-//   return {
-//     props: {
-//       images: images.data,
-//     }
-//   }
-// }
+  return {
+    props: {
+      images: images.data,
+    }
+  }
+}
