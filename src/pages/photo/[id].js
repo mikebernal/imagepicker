@@ -34,9 +34,7 @@ export default function Photo(props) {
     const index  = props.ids.indexOf(props.photo.id)
     const length = props.ids.length
 
-
     function getPhoto(index) {
-        console.log(ids[index])
         return ids[index]
     }
     
