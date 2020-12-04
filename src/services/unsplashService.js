@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 // Third party libraries
 import axios from 'axios'
 import { axiosGetCancellable } from '../helpers/axios.helper'
+import { useInfiniteQuery } from 'react-query'
 
 const axiosConfig = {
   baseURL: 'https://api.unsplash.com/'
@@ -15,16 +16,6 @@ export async function getImage(id) {
       return await axios.get(`photos/${id}?client_id=` + process.env.UNSPLASH_CLIENT_ID, axiosConfig)
   }
 }
-
-// Get random images using react query's infinite queries
-export async function getInfiniteImages() {
-  if (isServer()) {
-      return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID + `&count=10`, axiosConfig)
-  }
-
-  return axiosGetCancellable(`api/search`)
-}
-
 
 // GET /photos/random
 // params count=10
