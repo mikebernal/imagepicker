@@ -6,6 +6,9 @@ Quick Links:
 1. Preview deployment: http://imagepicker-git-main.mikebernal.vercel.app/
 2. Action board: https://github.com/mikebernal/imagepicker/projects/1
 
+***
+photo component image : rCmZ93c6KQk
+
 ## Screenshots
 
 ### UI data flow

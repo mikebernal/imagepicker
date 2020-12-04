@@ -9,11 +9,10 @@ import Loader from '../components/Loader'
 import ImageList from '../components/ImageList'
 
 // Third party libraries
-import axios from 'axios'
 import { useInfiniteQuery } from 'react-query'
 
 // Services
-import { getImages } from '../services/unsplashService'
+import { getInitialImages, getSubsequentImages } from '../services/unsplashService'
 
 // Helpers
 import { SITE_TITLE } from '../../src/helpers/site-title.helper'
@@ -22,19 +21,15 @@ import { SITE_TITLE } from '../../src/helpers/site-title.helper'
 export default function Posts(props) {
   const [start, setStart] = useState(0)
 
-  async function fetchImages(key, nextId = 10) {
-    const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID2}&count=${nextId}`)
-    return data
-  }
-
+  // Add local json file as a fallback if something went wrong or use getSubsequentImage
   const imagesQuery = useInfiniteQuery(
     'images', 
-    fetchImages, {
+    getSubsequentImages, {
     staleTime: Infinity,
-    initialData: props.images,
+    initialData: props?.images || getSubsequentImages,
   })
 
-  function getMore() {
+  function getMoreImages() {
     const newStart = start + 10
     setStart(newStart)
     imagesQuery.fetchMore(newStart)
@@ -44,7 +39,7 @@ export default function Posts(props) {
 
     function onScroll() {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            getMore()
+          getMoreImages()
         }
     }
 
@@ -84,7 +79,7 @@ export default function Posts(props) {
 }
 
 export async function getServerSideProps(context) {
-  const images = await getImages()
+  const images = await getInitialImages()
   if (!images) {
     return {
       notFound: true
