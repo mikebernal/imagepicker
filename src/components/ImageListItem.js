@@ -40,7 +40,7 @@ export default function ImageListItem({img, ids}) {
                                 quality={100}
                                 objectPosition="50% 50%"
                                 priority={true}
-                                sizes="(max-width: 600px) 100vw, (max-width: 1023px) 48vw, 23vw"
+                                sizes="(max-width: 769px) 100vw, (max-width: 1023px) 48vw, 23vw"
                             /></a>
                     </div>
                 {/* <img className={styles.img} src={img.urls.regular} alt={img.description} title={img.description} /> */}
