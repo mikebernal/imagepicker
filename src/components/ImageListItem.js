@@ -15,6 +15,7 @@ export default function ImageListItem({img, ids}) {
     return (
         <div key={img.id} className={styles.column}>
             <span 
+                style={{width: "100%"}}
                 className="hover"
                 onClick={() => (
                     router.push({ 
@@ -27,8 +28,22 @@ export default function ImageListItem({img, ids}) {
 
                     })
                 )}>
-                {/* <a><Image styles={styles.img} src={img.urls.thumb} alt={img.description} layout="fill" /><img src={img.urls.small} alt={img.description} style={{ width: "100%", height: "auto" }} title={img.description}/></a> */}
-                <img className={styles.img} src={img.urls.regular} alt={img.description} title={img.description} />
+                    {/*  width={327} height={582}  */}
+                    <div className={styles.image_div} >
+                        {/* <a><Image src={img.urls.regular} alt={img.description} width={327} height={582} quality={100} objectPosition="50% 50%" priority={true} /></a> */}
+                        <a>
+                            <Image 
+                                src={img.urls.regular}
+                                alt={img.description}
+                                width={327}
+                                height={582}
+                                quality={100}
+                                objectPosition="50% 50%"
+                                priority={true}
+                                sizes="(max-width: 769px) 100vw, (max-width: 1023px) 48vw, 23vw"
+                            /></a>
+                    </div>
+                {/* <img className={styles.img} src={img.urls.regular} alt={img.description} title={img.description} /> */}
             </span>
         </div>
     )
