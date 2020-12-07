@@ -1,5 +1,5 @@
 // React component
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // Next component
 import Image from 'next/image'
@@ -11,8 +11,6 @@ import UserAvatar from '../../components/UserAvatar'
 import Header from '../../components/Header'
 import Breadcrumb from '../../components/Breadcrumb'
 import Date from '../../components//Date'
-import PreviousButton from '../../components/PreviousButton'
-import NextButton from '../../components/NextButton'
 
 // Services
 import { getImage } from '../../services/unsplashService'
@@ -20,10 +18,6 @@ import { getImage } from '../../services/unsplashService'
 // Helpers
 import { Excerpt } from '../../helpers/excerpt.helper'
 import { getPostType } from '../../helpers/post.helper'
-
-// Third party libraries
-import { useInfiniteQuery } from 'react-query'
-import { ReactQueryDevtools } from 'react-query-devtools'
 
 // Styles
 import styles from '../../components/photo.module.scss'
@@ -34,33 +28,6 @@ import { FaHeart, FaPlus, FaDownload } from 'react-icons/fa'
 export default function Photo(props) {
     const [isShown, setIsShown] = useState("")
     const router = useRouter()
-    const ids    = props.ids
-    const index  = props.ids.indexOf(props.photo.id)
-    const length = props.ids.length
-
-    function getPhoto(index) {
-        return ids[index]
-    }
-    
-    // Display navigation button
-    function navigation() {
-
-        switch(index) {
-            case 0: 
-                // Hide previous button
-                return <NextButton id={(getPhoto(index+1))} ids={ids} />
-            case (length - 1):
-                // Hide next button
-                return <PreviousButton id={(getPhoto(index-1))} ids={ids} />
-            default:
-                return (
-                    <>
-                        <PreviousButton id={(getPhoto(index-1))} ids={ids} />
-                        <NextButton id={(getPhoto(index+1))} ids={ids} />
-                    </>
-                )
-        }
-    }
 
     function toggleModal() {
         if (isShown === "is-active") {
@@ -83,7 +50,7 @@ export default function Photo(props) {
                 {/* Main footer */}
                 <div className={`${styles.main_footer}`}>
 
-                    {navigation()}
+                    {/* {navigation()} */}
 
                     {/* Col1 */}
                     <div className={styles.col1}>
@@ -161,7 +128,6 @@ export default function Photo(props) {
                     <div className="modal-background"></div>
                         <div className={`${modal.test} modal-content`} style={{ width: "80%", height: "auto", overflow: "auto" }}>
                             <div className="image is-1by1">
-                                {/* <img className={modal.img} src={photo.urls.full} alt={photo.alt_description} alt={photo.alt_description} /> */}
                                 <Image src={props.photo.urls.regular} alt={props.photo.alt_description} layout="fill" objectFit="cover" />
                             </div>
                         </div>
@@ -169,7 +135,6 @@ export default function Photo(props) {
                 </div>
 
             </div>
-            <ReactQueryDevtools />
         </div>
     )
 }
@@ -179,7 +144,6 @@ export async function getServerSideProps(context) {
     return {
         props:{
             photo: res.data,
-            ids: context.query.ids
         }
     }
 }
