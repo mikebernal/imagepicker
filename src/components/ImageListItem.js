@@ -18,9 +18,7 @@ export default function ImageListItem({ img }) {
                 style={{width: "100%"}}
                 className="hover"
                 onClick={() => (
-                    router.push({ 
-                        pathname: `/photo/${img.id}`
-                    })
+                    router.push(`/photo/${img.id}`)
                 )}>
                     <div className={styles.image_div} >
                         <a>
