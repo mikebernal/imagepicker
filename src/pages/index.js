@@ -10,7 +10,8 @@ import ImageList from '../components/ImageList'
 
 // Third party libraries
 import { useInfiniteQuery } from 'react-query'
-
+import { ReactQueryDevtools } from 'react-query-devtools'
+ 
 // Services
 import { getInitialImages, getSubsequentImages } from '../services/unsplashService'
 
@@ -74,6 +75,7 @@ export default function Posts(props) {
           </>
         )
       }
+      <ReactQueryDevtools />
     </div>
   )
 }

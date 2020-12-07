@@ -21,6 +21,10 @@ import { getImage } from '../../services/unsplashService'
 import { Excerpt } from '../../helpers/excerpt.helper'
 import { getPostType } from '../../helpers/post.helper'
 
+// Third party libraries
+import { useInfiniteQuery } from 'react-query'
+import { ReactQueryDevtools } from 'react-query-devtools'
+
 // Styles
 import styles from '../../components/photo.module.scss'
 import modal from '../../components/modal.module.scss'
@@ -165,7 +169,7 @@ export default function Photo(props) {
                 </div>
 
             </div>
-
+            <ReactQueryDevtools />
         </div>
     )
 }

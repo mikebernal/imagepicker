@@ -6,24 +6,13 @@ import { axiosGetCancellable } from '../helpers/axios.helper'
 import { isServer } from '../helpers/server.helper'
 
 const axiosConfig = {
-  baseURL: 'https://api.unsplash.com/'
+  baseURL: 'https://api.unsplash.com/',
+  headers: {
+    Authorization: process.env.UNSPLASH_CLIENT_ID
+  }
 }
 
-// -----------------------------------------------------------------
-// ------------------------Client-side------------------------------
-// -----------------------------------------------------------------
-
-/**
- * Client-side HTTP request
- * Used for fetching data when user scroll down to the list of images
- * @param {*} key 
- * @param {*} nextId 
- */
-
-export async function getSubsequentImages(key, nextId = 10) {
-  const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${process.env.UNSPLASH_CLIENT_ID3}&count=${nextId}`)
-  return data
-}
+const client_id = process.env.UNSPLASH_CLIENT_ID
 
 // -----------------------------------------------------------------
 // ------------------------Server-side------------------------------
@@ -36,7 +25,7 @@ export async function getSubsequentImages(key, nextId = 10) {
  */
 export async function getImage(id) {
   if (isServer()) {
-      return await axios.get(`photos/${id}?client_id=` + process.env.UNSPLASH_CLIENT_ID3, axiosConfig)
+      return await axios.get(`photos/${id}?client_id=` + client_id, axiosConfig)
   }
 }
 
@@ -45,12 +34,21 @@ export async function getImage(id) {
  */
 export async function getInitialImages() {
     if (isServer()) {
-        return await axios.get(`photos/random?client_id=` + process.env.UNSPLASH_CLIENT_ID3 + `&count=10`, axiosConfig)
+        return await axios.get(`photos/random?client_id=` + client_id + `&count=10`, axiosConfig)
     }
 
-    return axiosGetCancellable(`api/search`)
+    return axiosGetCancellable(`api/photo`)
 }
 
+/**
+ * Used for fetching data when user scroll down to the list of images
+ * @param {*} key 
+ * @param {*} nextId 
+ */
+export async function getSubsequentImages(key, nextId = 10) {
+  const { data } = await axios.get(`https://api.unsplash.com/photos/random?client_id=${client_id}&count=${nextId}`)
+  return data
+}
 
 /**
  * GET /users/:username
@@ -59,6 +57,6 @@ export async function getInitialImages() {
  */
 export async function getProfile(username) {
     if (isServer()) {
-        return await axios.get(`users/${username}?client_id=` + process.env.UNSPLASH_CLIENT_ID2, axiosConfig)
+        return await axios.get(`users/${username}?client_id=` + client_id, axiosConfig)
     }
 }
