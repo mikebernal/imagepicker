@@ -1,11 +1,10 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import styles from "./previousbutton.module.scss"
 
 import { FaChevronLeft } from 'react-icons/fa'
 
-export default function PreviousButton({id, ids}) {
+export default function PreviousButton({ id }) {
     const router = useRouter()
 
     return (
@@ -13,12 +12,7 @@ export default function PreviousButton({id, ids}) {
             className="hover"
             onClick={() => (
                 router.push({ 
-                    pathname: `/photo/[id]`,
-                    as: `/photo/${id}`,
-                    query: {
-                        id: id,
-                        ids: ids
-                    }
+                    pathname: `/photo/${id}`
                 }, 
                 { shallow: true }
                 )

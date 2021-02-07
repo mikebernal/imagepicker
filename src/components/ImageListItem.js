@@ -9,7 +9,7 @@ import styles from './imagelist.module.scss'
 //     return element['id']
 //   });
 
-export default function ImageListItem({img, ids}) {
+export default function ImageListItem({ img }) {
     const router = useRouter()
 
     return (
@@ -18,19 +18,9 @@ export default function ImageListItem({img, ids}) {
                 style={{width: "100%"}}
                 className="hover"
                 onClick={() => (
-                    router.push({ 
-                        pathname: `/photo/[id]`,
-                        as: `/photo/${img.id}`,
-                        query: {
-                            id: img.id,
-                            ids: ids
-                        }
-
-                    })
+                    router.push(`/photo/${img.id}`)
                 )}>
-                    {/*  width={327} height={582}  */}
                     <div className={styles.image_div} >
-                        {/* <a><Image src={img.urls.regular} alt={img.description} width={327} height={582} quality={100} objectPosition="50% 50%" priority={true} /></a> */}
                         <a>
                             <Image 
                                 src={img.urls.regular}
@@ -41,9 +31,9 @@ export default function ImageListItem({img, ids}) {
                                 objectPosition="50% 50%"
                                 priority={true}
                                 sizes="(max-width: 769px) 100vw, (max-width: 1023px) 48vw, 23vw"
-                            /></a>
+                            />
+                        </a>
                     </div>
-                {/* <img className={styles.img} src={img.urls.regular} alt={img.description} title={img.description} /> */}
             </span>
         </div>
     )
